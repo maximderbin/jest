@@ -13,10 +13,11 @@
 import type {ThrowingMatcherFn, ExpectationResult} from '../types';
 
 const matchers = require('./matchers');
+const spyMatchers = require('./spy-matchers');
 
 function expect(actual: any) {
   const expectation = {not: {}};
-  const allMatchers = Object.assign({}, matchers);
+  const allMatchers = Object.assign({}, matchers, spyMatchers);
   Object.keys(allMatchers).forEach(name => {
     expectation[name] = makeThrowingMatcher(allMatchers[name], false, actual);
     expectation.not[name] =

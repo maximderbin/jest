@@ -22,3 +22,4 @@ export type RawMatcherFn = (
 
 export type ThrowingMatcherFn = (actual: any) => void;
 export type MatchersObject = {[id:string]: RawMatcherFn};
+export type SpyMatchersObject = {[id:string]: RawMatcherFn};
