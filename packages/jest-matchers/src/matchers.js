@@ -11,6 +11,7 @@
 'use strict';
 
 import type {MatchersObject} from '../types';
+import {ensureNoExpected} from './utils';
 
 const diff = require('jest-diff');
 const {stringify} = require('jest-matcher-utils');
@@ -193,13 +194,6 @@ const matchers: MatchersObject = {
 
     return {message, pass};
   },
-};
-
-const ensureNoExpected = (expected, matcherName) => {
-  matcherName || (matcherName = 'This');
-  if (typeof expected !== 'undefined') {
-    throw new Error(`${matcherName} matcher does not accept any arguments`);
-  }
 };
 
 const ensureNumbers = (actual, expected, matcherName) => {
